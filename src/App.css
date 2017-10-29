@@ -22,3 +22,34 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.Item-table {
+  
+}
+
+.Item-table-border {
+  border: 1px solid black;
+}
+
+.Item-input {
+  margin-top: 20px;
+}
+
+.Person-input {
+  margin-top: 20px;
+}
+
+.Debts-table {
+  border: 1px solid black;
+  table-layout: fixed;
+  width: 1000px;
+}
+
+th, td {
+  border: 1px solid black;
+  width: 50px;
+}
+
+input {
+  margin-right: 10px;
+}
