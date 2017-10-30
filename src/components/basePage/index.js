@@ -1,3 +1,4 @@
-import { BasePage as view } from './view/basePage';
+import BasePage from './container';
+import { basePage as reducer } from './reducer';
 
-export {view};
+export {BasePage, reducer};

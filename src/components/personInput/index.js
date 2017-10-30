@@ -1,3 +1,3 @@
-import { PersonInput as view } from './view/personInput';
+import PersonInput from './container';
 
-export {view};
+export {PersonInput};

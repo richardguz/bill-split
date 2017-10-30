@@ -12,12 +12,15 @@ export class PersonInput extends React.Component {
   }
 
   updateState(e) {
-    e.preventDefault();
+    const {onPeopleInput, closeModal} = this.props;
 
-    this.props.onPeopleInput(this.state.personName);
+    e.preventDefault();
+    onPeopleInput(this.state.personName);
     this.setState({
       personName: ''
     });
+
+    closeModal();
   }
 
   updateInputValue(evt) {
@@ -28,7 +31,7 @@ export class PersonInput extends React.Component {
 
   render(){
     return (
-      <form className="Person-input" onSubmit={this.updateState}>
+      <form className="personInput" onSubmit={this.updateState}>
         <input type="text"
           placeholder="Person's Name"
           name="name"
@@ -40,5 +43,6 @@ export class PersonInput extends React.Component {
 }
 
 PersonInput.propTypes = {
-  onPeopleInput: PropTypes.func
+  onPeopleInput: PropTypes.func,
+  closeModal: PropTypes.func
 };

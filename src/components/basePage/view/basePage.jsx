@@ -1,7 +1,9 @@
 import React from 'react';
+import Modal from 'react-modal';
+import PropType from 'prop-types';
 import { view as ItemTable } from '../../item/itemTable';
 import { view as ItemInput } from '../../item/itemInput';
-import { view as PersonInput } from '../../personInput';
+import { PersonInput } from '../../personInput';
 import { view as DebtsTable } from '../../debtsTable';
 
 export class BasePage extends React.Component {
@@ -25,7 +27,9 @@ export class BasePage extends React.Component {
     }));
   }
 
-  render(){
+  render() {
+    const {modalOpen, handleOpenModal} = this.props;
+
     return (
       <div>
         <ItemTable items={this.state.items} people={this.state.people} />
@@ -33,11 +37,19 @@ export class BasePage extends React.Component {
           onItemInput={this.handleItemInput}
           people={this.state.people}
           items={this.state.items}/>
-        <PersonInput onPeopleInput={this.handlePeopleInput}
-          people={this.state.people}/>
+        <button onClick={handleOpenModal}>Trigger Modal</button>
+        <Modal isOpen={modalOpen} >
+          <PersonInput onPeopleInput={this.handlePeopleInput}
+            people={this.state.people}/>
+        </Modal>
         <DebtsTable people={this.state.people}
           items={this.state.items}/>
       </div>
     );
   }
 }
+
+BasePage.propTypes = {
+  handleOpenModal: PropType.func,
+  modalOpen: PropType.bool
+};
