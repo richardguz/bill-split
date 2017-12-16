@@ -5,6 +5,18 @@ import { view as ItemTable } from '../../item/itemTable';
 import { view as ItemInput } from '../../item/itemInput';
 import { PersonInput } from '../../personInput';
 import { view as DebtsTable } from '../../debtsTable';
+import '../stylesheet/basePage.scss';
+
+const customStyles = {
+  content : {
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    transform             : 'translate(-50%, -50%)'
+  }
+};
 
 export class BasePage extends React.Component {
   constructor(props) {
@@ -31,14 +43,20 @@ export class BasePage extends React.Component {
     const {modalOpen, handleOpenModal} = this.props;
 
     return (
-      <div>
+      <div className="BasePage">
         <ItemTable items={this.state.items} people={this.state.people} />
         <ItemInput onPeopleInput={this.handlePeopleInput}
           onItemInput={this.handleItemInput}
           people={this.state.people}
           items={this.state.items}/>
-        <button onClick={handleOpenModal}>Trigger Modal</button>
-        <Modal isOpen={modalOpen} >
+        <button onClick={handleOpenModal}>Add a person to the ledger</button>
+        <Modal overlayClassName={{
+            base: 'BasePage__modal',
+            afterOpen: 'BasePage__modal',
+            beforeClose: 'BasePage__modal'
+          }}
+          style={customStyles}
+          isOpen={modalOpen} >
           <PersonInput onPeopleInput={this.handlePeopleInput}
             people={this.state.people}/>
         </Modal>

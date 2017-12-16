@@ -6,7 +6,8 @@ export class PersonInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputValue: ''
+      inputValue: '',
+      personName: ''
     };
 
     this.updateState = this.updateState.bind(this);
@@ -14,6 +15,13 @@ export class PersonInput extends React.Component {
 
   updateState(e) {
     const {onPeopleInput, closeModal} = this.props;
+    const {personName} = this.state;
+
+    if (personName === '') {
+      debugger;
+      closeModal();
+      return;
+    }
 
     e.preventDefault();
     onPeopleInput(this.state.personName);
@@ -31,14 +39,19 @@ export class PersonInput extends React.Component {
   }
 
   render(){
+    const {closeModal} = this.props;
+
     return (
-      <form className="personInput" onSubmit={this.updateState}>
-        <input type="text"
-          placeholder="Person's Name"
-          name="name"
-          onChange={evt => this.updateInputValue(evt)} />
-        <button className='PersonInput__submit'>Submit</button>
-      </form>
+      <div className="PersonInput">
+        <form onSubmit={this.updateState}>
+          <input type="text"
+            placeholder="Person's Name"
+            name="name"
+            onChange={evt => this.updateInputValue(evt)} />
+          <button className='PersonInput__submit'>Submit</button>
+        </form>
+        <button onClick={() => closeModal()} className="PersonInput__close">Close</button>
+      </div>
     );
   }
 }

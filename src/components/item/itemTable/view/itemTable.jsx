@@ -9,6 +9,10 @@ export class ItemTable extends React.Component {
       rows.push(<ItemRow item={item}
       key={item.id} />);
     });
+
+    if (rows.length === 0) {
+      return null;
+    }
     return (
       <table className="Item-table-border">
         <thead>

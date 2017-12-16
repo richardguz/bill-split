@@ -19,8 +19,24 @@ function toggleModal(state = initialState, action) {
   }
 }
 
+function closeModal(state = initialState) {
+  return {
+    ...state,
+    modalOpen: false
+  };
+}
+
+function openModal(state = initialState) {
+  return {
+    ...state,
+    modalOpen: true
+  };
+}
+
 const basePage = combineReducers({
-  toggleModal
+  toggleModal,
+  closeModal,
+  openModal
 });
 
 export default basePage;

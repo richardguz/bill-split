@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../stylesheet/itemInput.scss';
 
 export class ItemInput extends React.Component {
   constructor(props) {
@@ -67,18 +68,18 @@ export class ItemInput extends React.Component {
   render(){
     const {people} = this.props;
     return (
-      <form className="Item-input" onSubmit={this.updateState}>
-        <input type="text"
+      <form className="ItemInput" onSubmit={this.updateState}>
+        <input className="ItemInput__field" type="text"
           placeholder="Item Name"
           name="name"
           value={this.state['name']}
           onChange={evt => this.updateInputValue(evt)}/>
-        <input type="text"
+        <input className="ItemInput__field" type="text"
           placeholder="Cost"
           name="cost"
           value={this.state['cost']}
           onChange={evt => this.updateInputValue(evt)}/>
-        <input type="text"
+        <input className="ItemInput__field" type="text"
           placeholder="Who Paid"
           name="buyer"
           value={this.state['buyer']}
