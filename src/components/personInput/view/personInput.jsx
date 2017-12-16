@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../stylesheet/personInput.scss';
 
 export class PersonInput extends React.Component {
   constructor(props) {
@@ -36,7 +37,7 @@ export class PersonInput extends React.Component {
           placeholder="Person's Name"
           name="name"
           onChange={evt => this.updateInputValue(evt)} />
-        <button>Submit</button>
+        <button className='PersonInput__submit'>Submit</button>
       </form>
     );
   }
